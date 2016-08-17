@@ -15,14 +15,10 @@ author_dir: /author
 author_title_prefix: 'Posted by '
 media_folder: /media/compressed
 author_default_avatar: /profile-pic.jpg
-tumblr: "#"
-pinterest: "#"
-instagram: "#"
-twitter: "#"
-facebook: "#"
-youtube: "#"
-vimeo: "#"
-soundcloud: "#"
+twitter: "http://www.twitter.com/santoroski"
+facebook: "http://www.facebook.com/santoroski"
+instagram: "http://www.instragram.com/santoroski"
+youtube: "http://www.youtube.com/users/santoroski"
 
 encoding: utf-8
 defaults:
