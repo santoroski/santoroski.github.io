@@ -1,58 +1,424 @@
----
-layout: index-full
-description: the good site of life
----
-{% for post in paginator.posts %}
-    {% include article_index.html %}
-{% endfor %}
 
-{% if paginator.total_pages > 1 %}
-    <div class="pagination">
-        <!-- link to first page -->
-        {% if paginator.total_pages > 3 %}
-            {% if paginator.page == 1 %}
-                <span class="btn disabled"><i class="fa fa-angle-double-left"></i></span>
-            {% else %}
-                <a class="btn" href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-angle-double-left"></i></a>
-            {% endif %}
-        {% endif %}
+<!DOCTYPE html>
 
-        <!-- previous link -->
-        {% if paginator.previous_page %}
-            <a class="btn prev" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-angle-left"></i></a>
-        {% else %}
-            <span class="btn disabled"><i class="fa fa-angle-left"></i></span>
-        {% endif %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
 
-        <!-- number links -->
-        {% capture start %}
-            {{ paginator.page | minus: 3 }}
-        {% endcapture %}
+    <title>Santoroski.com Bookmarks</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <!-- Latest compiled and minified CSS -->
+    <!-- Compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css" rel="stylesheet">
 
-        {% for i in (1..paginator.total_pages) limit: 5 offset: start %}
-            {% if i == paginator.page %}
-                <span class="btn disabled">{{ i }}</span>
-            {% elsif i == 1 %}
-                <a class="btn" href="{{ site.baseurl }}/">{{ i }}</a>
-            {% else %}
-                <a class="btn" href="/page/{{ i }}">{{ i }}</a>
-            {% endif %}
-        {% endfor %}
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="style/style.css" rel="stylesheet"> -->
+    <!-- Latest compiled and minified JavaScript -->
+    <style>
+      .collection a.collection-item {
+        color: #039be5;
+      }
 
-        <!-- next link -->
-        {% if paginator.next_page %}
-            <a class="btn next" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><i class="fa fa-angle-right"></i></a>
-        {% else %}
-            <span class="btn disabled"><i class="fa fa-angle-right"></i></span>
-        {% endif %}
+    </style>
+    <script>
+      $(document).ready(function() {
+        $("#news").load("/news.php", function() {
+          console.log('Loaded');
+        });
+      });
+      $( "#refresh" ).click(function() {
+        alert( "Handler for .click() called." );
+      });
+    </script>
 
-        <!-- last page link -->
-        {% if paginator.total_pages > 3 %}
-            {% if paginator.page == paginator.total_pages %}
-                <span class="btn disabled"><i class="fa fa-angle-double-right"></i></span>
-            {% else %}
-                <a class="btn" href="{{ site.baseurl | replace: '//', '/' }}/page/{{paginator.total_pages}}"><i class="fa fa-angle-double-right"></i></a>
-            {% endif %}
-        {% endif %}
+  </head>
+
+  <body>
+
+    <nav>
+      <div class="nav-wrapper blue lighten-2">
+        <div class="col s12">
+          <a class="brand-logo right" href="http://www.santoroski.com"><img </a src="/images/santoroski.png">
+          </div>
+          <ul class="left hide-on-med-and-down" id="nav-mobile">
+            <li>
+              <a href="http://www.roanoke.edu/inside"><i class="material-icons left">home</i>Home</a>
+            </li>
+            <li>
+              <a href="https://mymail.roanoke.edu"><i class="material-icons left">email</i>Work Email</a>
+            </li>
+            <li>
+              <a href="https://tasks.roanoke.edu"><i class="material-icons left">new_releases</i>Tasks</i>
+            </a>
+          </li>
+
+          <li>
+            <a href="http://mail.santoroski.com"><i class="material-icons left">markunread_mailbox</i>My Email</a>
+          </li>
+
+          <li>
+            <a href="https://mailroanoke-my.sharepoint.com/personal/santoros_roanoke_edu/_layouts/15/start.aspx#/Documents/Forms/All.aspx"><i class="material-icons left">work</i>OneDrive</a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/feed/subscriptions"><i class="material-icons left">video_library</i>YouTube</a>
+          </li>
+          <li>
+            <a href="http://bookmarks.santoroski.com/Feedz/upload/index.php"><i class="material-icons left">lock</i>Feedz</a>
+          </li>
+
+          
+        </ul>
+
+      </div>
+    </nav>
+    <div class="row">
+      <div class="col m4 s12">
+        <div class="card-panel  blue lighten-5" id="news" style="height:100%">
+          <h4>Today's News</h4>
+
+        </div>
+      </div>
+
+      <div class="col m2 s12">
+        <div class="section">
+
+    <div class="collection with-header z-depth-1">
+            <div class="collection-item"><h5>RC Sites</h5></div>
+            <a  class="collection-item"  href="http://roanoke.edu/">Roanoke College</a>
+
+            <a class="collection-item" href="http://roanoke.edu/inside">Inside Roanoke</a>
+
+
+            <a class="collection-item" href=
+               "https://directory.roanoke.edu/search">Directory</a>
+
+            <a class="collection-item" href=
+               "http://webedit.roanoke.edu/roanoke/client/asp/views/publishMonitor/pubStatus.asp">
+                Ingeniux Pub Status</a>
+
+            <a class="collection-item" href=
+               "http://maroons.roanoke.edu/admin/adminlogin.aspx?ReturnUrl=/admin/admin_main.aspx">
+                ICS Athletics Site</a>
+
+            <a class="collection-item" href=
+               "https://unitrends.roanoke.edu/recoveryconsole/">Backup
+                / Restore</a>
+
     </div>
-{% endif %}
+</div>
+        
+
+
+    <div class="section">
+
+          <div class="collection with-header z-depth-1">
+                  <div class="collection-item"><h5>E-mail Workflow</h5></div>
+
+                <a class="collection-item" href=
+                   "http://roanoke-enews.gotoextinguisher.com/">Enews
+                    Extinguiser</a>
+
+                <a class="collection-item" href="http://webapps.roanoke.edu/enews">E-news
+                    Storyboard</a>
+
+                <a class="collection-item" href=
+                   "http://roanoke.gotoextinguisher.com/">Admissions
+                    Extinguiser</a>
+
+
+        </div>
+    </div>
+        <div class="section">
+
+          <div class="collection with-header z-depth-1">
+              <div class="collection-item"><h5>Web + CSS + Design</h5></div>
+
+
+            <a class="collection-item" href=
+               "http://getbootstrap.com/">Twitter
+                Bootstrap</a>
+
+
+
+            <a class="collection-item" href="http://www.cfquickdocs.com/cf8">CF Quick
+                Docs</a>
+
+
+
+            <a class="collection-item" href="http://www.entitycode.com/">Entity
+                Codes</a>
+
+
+
+            <a class="collection-item" href="http://www.alvit.de/handbook/">Web
+                Developers Handbook</a>
+
+
+
+            <a class="collection-item" href=
+               "http://www.w3schools.com/sql/default.asp">SQL
+                Commands</a>
+            <a class="collection-item" href="http://html-ipsum.com/">HTML Ipsum</a>
+            <a class="collection-item" href="http://jqapi.com/">jQuery Docs</a>
+            <a class="collection-item" href="http://html5boilerplate.com/">HTML 5
+                Boilerplate</a>
+            <a class="collection-item" href="http://instacss.com">Insta CSS</a>
+            <a class="collection-item" href="http://www.colorhexa.com">Color Hexa</a>
+            <a class="collection-item" href="http://css3please.com/">CSS 3 Please</a>
+        </div>
+</div>
+      </div>
+
+      <div class="col m2 s12">
+
+        <div class="section">
+
+<div class="collection with-header z-depth-1">
+  <div class="collection-item"><h5>RC Sites</h5></div>
+
+
+
+      <a class="collection-item" href="https://webapps.roanoke.edu/cfide/administrator/index.cfm">
+                  Coldfusion Admin</a>
+
+
+
+      <a class="collection-item" href="http://webedit.roanoke.edu/roanoke">Ingeniux
+                  Edit</a>
+
+
+
+      <a class="collection-item" href="http://intranet.roanoke.edu/CFIDE/administrator/index.cfm">
+                  Intranet CF Admin</a>
+
+
+
+      <a class="collection-item" href="https://myrc.roanoke.edu/">MyRC Portal</a>
+
+
+
+      <a class="collection-item" href="http://sandbox/cfide/administrator/index.cfm">Sandbox
+                  CF Admin</a>
+
+
+
+      <a class="collection-item" href="http://webapps.roanoke.edu/webannouncer/login.cfm">
+                  Announcements Admin</a>
+
+
+
+      <a class="collection-item" href="http://www.e2campus.com/my/roanoke/admin/index.htm">
+                  e2campus</a>
+
+
+
+      <a class="collection-item" href="http://intranet.roanoke.edu/portallinksadmin">Portal
+                  Links Admin</a>
+
+
+
+      <a class="collection-item" href="http://www.google.com/analytics/">Google
+                  Analytics</a>
+
+
+
+
+      <a class="collection-item" href="http://support.roanoke.edu/adminui">Support</a>
+
+
+
+      <a class="collection-item" href="https://prtg.roanoke.edu/group.htm?id=3685">PRTG</a>
+
+
+    
+      <a class="collection-item" href="https://www.appleeducationaffiliate.com/">Apple
+                  Affiliate Tool</a>
+
+
+
+
+      <a class="collection-item" href="https://roanoke.xitracs.net/accredit/logon.jsp">Xitracs</a>
+
+
+      <a class="collection-item" href="https://outlook.office365.com/ecp/">Manage Distribution Groups</a>
+
+  </div>
+</div>
+        <div class="section">
+  <div class="collection with-header z-depth-1">
+          <div class="collection-item"><h5>Project Management</h5></div>
+
+
+            <a class="collection-item" href=
+               "https://intranet.roanoke.edu/projects/ITlinks/schedule.cfm">
+                Student Schedule</a>
+            <a class="collection-item" href="https://freedcamp.com/">FeedCamp - PM</a>
+            <a class="collection-item" href=
+               "https://intranet.roanoke.edu/projects/request/">Project
+                Request</a>
+            <a class="collection-item" href=
+               "http://www.roanoke.edu/computing/bookmarks/">ITSA
+                Home Page</a>
+            <a class="collection-item" href="http://e.ggtimer.com/120">Egg Timer</a>
+
+    </div>
+</div>
+
+      </div>
+
+      <div class="col m2 s12">
+
+        <div class="section">
+  <div class="collection with-header z-depth-1">
+          <div class="collection-item"><h5>Computers</h5></div>
+
+
+
+              <a class="collection-item" href=
+                 "http://www.thesimpledollar.com/2006/12/01/30-essential-pieces-of-free-and-open-software-for-windows/">
+                  Free Software</a>
+
+
+
+              <a class="collection-item" href="http://secure.logmein.com">Log me in</a>
+
+
+
+              <a class="collection-item" href="http://www.apple.com/">Apple</a>
+
+      </div>
+  </div>
+        <div class="section">
+  <div class="collection with-header z-depth-1">
+          <div class="collection-item"><h5>Entertainment</h5></div>
+
+
+
+            <a class="collection-item" href=
+               "http://www.rottentomatoes.com/">RottenTomatoes</a>
+
+
+
+            <a class="collection-item" href="http://www.hulu.com">Hulu</a>
+
+
+            <a class="collection-item" href=
+               "http://www.fandango.com/carmike10_aajqm/theaterpage?wssaffid=11614_Carmike">
+                TW Showtimes</a>
+
+
+    </div>
+</div>
+        <div class="section">
+  <div class="collection with-header z-depth-1">
+          <div class="collection-item"><h5>Social Media</h5></div>
+
+
+
+            <a class="collection-item" href="http://twitter.com/home">Twitter</a>
+            <a class="collection-item" href="http://roanoke.facebook.com">Facebook</a>
+            <a class="collection-item" href=
+               "http://www.youtube.com/user/sandalwod">YouTube</a>
+            <a class="collection-item" href="http://cuwebd.ning.com/">University Web
+                Developers</a>
+            <a class="collection-item" href="http://www.tumblr.com">Tumblr</a>
+            <a class="collection-item" href="http://www.shelfari.com">Shelfari</a>
+            <a class="collection-item" href="http://pinterest.com/">Pinterest</a>
+        </div>
+</div>
+        <div class="section">
+  <div class="collection with-header z-depth-1">
+          <div class="collection-item"><h5>Shopping</h5></div>
+
+
+            <a class="collection-item" href="http://www.newegg.com/">New Egg</a>
+            <a class="collection-item" href="http://www.amazon.com/">Amazon</a>
+            <a class="collection-item" href="http://www.ebay.com/">e-bay</a>
+
+    </div>
+</div>
+        </div>
+
+        <div class="col m2 s12">
+
+          <div class="section">
+  <div class="collection with-header z-depth-1">
+          <div class="collection-item"><h5>Workout</h5></div>
+
+
+
+              <a class="collection-item" href=http://www.fitbit.com/">FitBit</a>
+
+
+
+              <a class="collection-item" href=http://www.abbottstkd.com/">Abbott's
+                  TKD</a>
+
+
+
+              <a class="collection-item" href=http://www.ymcaroanoke.org">Roanoke Valley
+                  YMCA</a>
+
+
+
+              <a class="collection-item" href=http://www.tkdtesting.com/">TKD
+                  Testing</a>
+
+
+
+              <a class="collection-item" href=http://www.dailymile.com/">Daily Mile</a>
+
+
+
+              <a class="collection-item" href=
+                 "http://www.runstoppable.com">Runstoppable</a>
+
+
+
+              <a class="collection-item" href=
+                 "http://www.youtube.com/watch?v=Uts1tLOfDfo">Office
+                  Stretch</a>
+
+
+
+              <a class="collection-item" href=
+                 "http://www.youtube.com/watch?v=mzxb30HrkTw&list=FLkB3EC5v_H_mbPpHl2C7EkA&index=1&feature=plpp_video">
+                  Choi-Yong</a>
+
+
+
+              <a class="collection-item" href=http://caloriecount.about.com">Calorie
+                  Count</a>
+
+      </div>
+  </div>
+          <div class="section">
+  <div class="collection with-header z-depth-1">
+          <div class="collection-item"><h5>Online Games</h5></div>
+
+
+              <a class="collection-item" href="https://geordanr.github.io/xwing/">XWing Squad Builder</a>
+            <a class="collection-item" href="http://www.poxnora.com">PoxNora</a>
+            <a class="collection-item" href="http://www.quakelive.com">QuakeLive</a>
+            <a class="collection-item" href=
+               "http://www.askmrrobot.com/wow/gear/usa/earthnring/stavia">
+                Wow Bot</a>
+            <a class="collection-item" href="http://www.wowhead.com/">Wow Head</a>
+            <a class="collection-item" href=
+               "http://www.icy-veins.com/beast-mastery-hunter-wow-pve-dps-guide">
+                Hunter Stuff</a>
+            <a class="collection-item" href="http://us.battle.net/wow/en/">WoW</a>
+        </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
